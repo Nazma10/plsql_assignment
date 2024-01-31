@@ -1,0 +1,9 @@
+DECLARE 
+ -- variables
+ -- constant
+ -- cursors
+ 
+BEGIN
+ -- Invoke APIs
+ NAZMA_COMPANY_API.insert_data('C002', 'Test', 'Test Address');
+END;

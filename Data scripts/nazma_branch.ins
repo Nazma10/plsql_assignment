@@ -1,0 +1,27 @@
+DECLARE
+  -- variables
+  -- constant
+  -- cursors
+
+BEGIN
+  -- Invoke APIs
+
+  -- create_branch
+  NAZMA_BRANCH_API.insert_data('Test Branch',
+                               'Test Branch Address',
+                               'Test Manager',
+                               2000,
+                               22);
+
+  -- update_branch
+  NAZMA_BRANCH_API.update_branch(23,
+                                 'Test Branch',
+                                 'Test Address',
+                                 'Test Manager',
+                                 2000,
+                                 22);
+
+  -- delete_branch
+  NAZMA_BRANCH_API.delete_branch(1, 3);
+
+END;
