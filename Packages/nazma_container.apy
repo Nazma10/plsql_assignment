@@ -1,6 +1,7 @@
 --package body
 CREATE OR REPLACE PACKAGE BODY NAZMA_CONTAINER_API AS
 
+  -- procedures
   -- create container
   PROCEDURE insert_data(max_weight_     IN NUMBER,
                         current_weight_ IN NUMBER,
@@ -46,6 +47,8 @@ CREATE OR REPLACE PACKAGE BODY NAZMA_CONTAINER_API AS
     DELETE FROM nazma_container_tab WHERE container_id = container_id_;
   END delete_container;
 
+
+  -- functions
   -- function to get max_weight
   FUNCTION get_max_weight(branch_id_ IN NUMBER, container_id_ IN NUMBER)
     RETURN NUMBER IS

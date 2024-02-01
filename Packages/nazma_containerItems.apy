@@ -1,6 +1,7 @@
 --package body
 CREATE OR REPLACE PACKAGE BODY NAZMA_CONTAINERITEMS_API AS
 
+  -- procedures
   -- create_containerItems
   PROCEDURE insert_data(container_id_ IN NUMBER,
                         item_id_      IN NUMBER,
@@ -31,6 +32,8 @@ CREATE OR REPLACE PACKAGE BODY NAZMA_CONTAINERITEMS_API AS
      WHERE container_id = container_id_ AND item_id = item_id_;
   END delete_containerItems;
 
+
+  -- functions
   -- function to get status
   FUNCTION get_status(container_id_ IN NUMBER, item_id_ IN NUMBER)
     RETURN VARCHAR2 IS

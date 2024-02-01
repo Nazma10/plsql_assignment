@@ -1,6 +1,7 @@
 --package body
 CREATE OR REPLACE PACKAGE BODY NAZMA_BRANCH_API AS
 
+  -- procedures
   -- create_branch
   PROCEDURE insert_data(branch_name_    IN VARCHAR2,
                         branch_address_ IN VARCHAR2,
@@ -50,6 +51,8 @@ CREATE OR REPLACE PACKAGE BODY NAZMA_BRANCH_API AS
      WHERE branch_id = branch_id_ AND company_id = company_id_;
   END delete_branch;
 
+
+  -- functions
   -- function to get branch_name
   FUNCTION get_branch_name(branch_id_ IN NUMBER, company_id_ IN NUMBER)
     RETURN VARCHAR2 IS
@@ -138,9 +141,11 @@ CREATE OR REPLACE PACKAGE BODY NAZMA_BRANCH_API AS
     remaining_capacity_ NUMBER;
   
     CURSOR occupied_capacity_cursor IS
-      SELECT COUNT(*)
+      SELECT SUM(max_volume) AS occupied_volume
         FROM nazma_container_tab
-       WHERE branch_id = branch_id_;
+       WHERE container_id IN
+             (SELECT container_id FROM nazma_containerItems_tab) AND
+             branch_id = branch_id_;
   
   BEGIN
     -- Use existing function to get total capacity of the branch

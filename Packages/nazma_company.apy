@@ -1,6 +1,7 @@
 --package body
 CREATE OR REPLACE PACKAGE BODY NAZMA_COMPANY_API AS
 
+  -- procedures
   -- create_company
   PROCEDURE insert_data(company_reg_no_  IN VARCHAR2,
                         company_name_    IN VARCHAR2,
@@ -37,6 +38,8 @@ CREATE OR REPLACE PACKAGE BODY NAZMA_COMPANY_API AS
     DELETE FROM nazma_company_tab WHERE company_id = company_id_;
   END delete_company;
 
+
+  -- functions
   -- function to get company_reg_no
   FUNCTION get_company_reg_no(company_id_ IN NUMBER) RETURN VARCHAR2 IS
     result_ VARCHAR2(20);
