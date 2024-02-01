@@ -20,6 +20,8 @@ CREATE OR REPLACE PACKAGE NAZMA_BRANCH_API AS
   -- delete_branch
   PROCEDURE delete_branch(branch_id_ IN NUMBER, company_id_ IN NUMBER);
 
+  -- procedure to get the current inventory info
+  PROCEDURE get_current_inventory_info(branch_id_ IN NUMBER);
 
   -- functions
   -- function to get branch_name

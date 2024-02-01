@@ -51,6 +51,21 @@ CREATE OR REPLACE PACKAGE BODY NAZMA_BRANCH_API AS
      WHERE branch_id = branch_id_ AND company_id = company_id_;
   END delete_branch;
 
+  -- procedure to get the current inventory info
+  PROCEDURE get_current_inventory_info(branch_id_ IN NUMBER) AS
+  
+  BEGIN
+    FOR inventory IN (SELECT *
+                        FROM nazma_containerItems_tab
+                       WHERE container_id IN
+                             (SELECT container_id
+                                FROM nazma_container_tab
+                               WHERE branch_id = branch_id_)) LOOP
+      dbms_output.put_line('Container_id: ' || inventory.container_id);
+      dbms_output.put_line('item_id: ' || inventory.item_id);
+      dbms_output.put_line('Status: ' || inventory.status);
+    END LOOP;
+  END;
 
   -- functions
   -- function to get branch_name
