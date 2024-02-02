@@ -1,0 +1,10 @@
+CREATE OR REPLACE VIEW foodItems_quantity AS
+SELECT b.branch_id, b.branch_name, fi.item_id, fi.item_name, fi.available_qty AS quantity
+FROM nazma_branch_tab b
+JOIN nazma_container_tab c ON b.branch_id = c.branch_id
+JOIN nazma_containerItems_tab ci ON c.container_id = ci.container_id
+JOIN nazma_foodItem_tab fi ON ci.item_id = fi.item_id
+WHERE ci.status = 'stored'
+GROUP BY b.branch_id, b.branch_name, fi.item_id, fi.item_name, fi.available_qty;
+
+
