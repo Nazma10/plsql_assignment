@@ -1,0 +1,5 @@
+CREATE OR REPLACE VIEW branch_capacity AS
+SELECT b.branch_id, b.branch_name, 
+       NAZMA_BRANCH_API.get_total_capacity(b.branch_id, b.company_id) AS total_capacity,
+       NAZMA_BRANCH_API.get_remaining_capacity(b.branch_id, b.company_id) AS remaining_capacity
+FROM nazma_branch_tab b;
