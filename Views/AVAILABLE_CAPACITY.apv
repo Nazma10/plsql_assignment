@@ -1,0 +1,4 @@
+CREATE OR REPLACE VIEW available_capacity AS 
+SELECT b.branch_id, b.branch_name, b.total_capacity, NAZMA_BRANCH_API.get_remaining_capacity(b.branch_id, b.company_id) AS remaining_capacity
+FROM nazma_branch_tab b
+WHERE NAZMA_BRANCH_API.remaining_capacity(b.branch_id, b.company_id) > : required_capacity;
